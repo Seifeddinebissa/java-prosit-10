@@ -1,9 +1,10 @@
 import java.util.HashSet;
+import java.util.Set;
 import java.util.TreeSet;
 
 public class DepartmentHashSet implements IDepartement<Departement>{
 
-    HashSet<Departement> set = new HashSet<>();
+    Set<Departement> set = new HashSet<>();
 
     @Override
     public void ajouterDepartement(Departement departement) {
@@ -41,7 +42,7 @@ public class DepartmentHashSet implements IDepartement<Departement>{
 
     @Override
     public TreeSet<Departement> trierDepartementById() {
-        TreeSet<Departement> treeSet = new TreeSet<>(set);
-        return treeSet;
+        Set<Departement> treeSet = new TreeSet<>(set);
+        return (TreeSet<Departement>) treeSet;
     }
 }
