@@ -1,9 +1,17 @@
-public interface IGestion {
-    public void ajouterEmploye(Employe e);
-    public boolean rechercherEmploye(String nom);
-    public boolean rechercherEmploye(Employe e);
-    public void supprimerEmploye(Employe e);
-    public void displayEmploye();
-    public void trierEmployeParId(); //Comparable
-    public void trierEmployeParNomDépartementEtGrade(); //Comparator
+public interface IGestion<T> {
+
+    void ajouterEmploye(T t);
+
+    boolean rechercherEmploye(String nom);
+
+    boolean rechercherEmploye(T t);
+
+    void supprimerEmploye(T t);
+
+    void displayEmploye();
+
+
+    void trierEmployeParId();
+
+    void trierEmployeParNomDepartementEtGrade();
 }

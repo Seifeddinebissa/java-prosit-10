@@ -1,19 +1,17 @@
-public class Employe {
-    private int  identifiant;
-    private String prenom;
-    private String nom;
-    private String nomDepartement;
-    private String grade;
+public class Employe implements Comparable<Employe> {
+
+    private int identifiant, grade;
+    private String nom, prenom, departement;
 
     public Employe() {
     }
 
-    public Employe(int identifiant, String prenom, String nom, String nomDepartement, String grade) {
+    public Employe(int identifiant, int grade, String nom, String prenom, String departement) {
         this.identifiant = identifiant;
-        this.prenom = prenom;
-        this.nom = nom;
-        this.nomDepartement = nomDepartement;
         this.grade = grade;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.departement = departement;
     }
 
     public int getIdentifiant() {
@@ -24,12 +22,12 @@ public class Employe {
         this.identifiant = identifiant;
     }
 
-    public String getPrenom() {
-        return prenom;
+    public int getGrade() {
+        return grade;
     }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setGrade(int grade) {
+        this.grade = grade;
     }
 
     public String getNom() {
@@ -40,35 +38,37 @@ public class Employe {
         this.nom = nom;
     }
 
-    public String getNomDepartement() {
-        return nomDepartement;
+    public String getPrenom() {
+        return prenom;
     }
 
-    public void setNomDepartement(String nomDepartement) {
-        this.nomDepartement = nomDepartement;
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
 
-    public String getGrade() {
-        return grade;
+    public String getDepartement() {
+        return departement;
     }
 
-    public void setGrade(String grade) {
-        this.grade = grade;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return this.identifiant == ((Employe)obj).getIdentifiant() && this.nom.equals(((Employe) obj).getNom());
+    public void setDepartement(String departement) {
+        this.departement = departement;
     }
 
     @Override
     public String toString() {
-        return "Employe{" +
-                "identifiant=" + identifiant +
-                ", prenom='" + prenom + '\'' +
-                ", nom='" + nom + '\'' +
-                ", nomDepartement='" + nomDepartement + '\'' +
-                ", grade='" + grade + '\'' +
-                '}';
+        return "Employe{ identifiant=" + identifiant + ", grade=" + grade + ", nom=" + nom + ", prenom=" + prenom + ", departement=" + departement + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Employe)) return false;
+        return getIdentifiant() == ((Employe)o).getIdentifiant() && getNom().equals(((Employe)o).getNom());
+    }
+
+
+    @Override
+    public int compareTo(Employe o) {
+        return this.identifiant - o.identifiant;
     }
 }

@@ -2,47 +2,52 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class DepartmentHashSet implements IDepartement<Departement>{
+public class DepartemenHashSet implements IDepartement<Departement>{
 
-    Set<Departement> set = new HashSet<>();
 
+    Set<Departement> hashDep;
+
+
+    public DepartemenHashSet(){
+        hashDep=new HashSet<>();
+    }
     @Override
     public void ajouterDepartement(Departement departement) {
-        set.add(departement);
+        hashDep.add(departement);
     }
 
     @Override
     public boolean rechercherDepartement(String nom) {
-        boolean test = false;
-        for (Departement obj : set) {
-            if (obj.getNom().equals(nom)) {
-                test = true;
-            }
-            break;
+        for(Departement d:hashDep){
+            if(d.nomDepartement.equals(nom))return true;
         }
-        return test;
+        return false;
     }
 
     @Override
     public boolean rechercherDepartement(Departement departement) {
-        return set.contains(departement);
+      if(hashDep.contains(departement))return true;
+      else return false;
     }
 
     @Override
     public void supprimerDepartement(Departement departement) {
-        set.remove(departement);
+         hashDep.remove(departement);
     }
 
     @Override
     public void displayDepartement() {
-        for (Departement dep:set) {
-            dep.toString();
+        for(Departement d : hashDep){
+            System.out.println(d);
         }
+
     }
 
     @Override
     public TreeSet<Departement> trierDepartementById() {
-        Set<Departement> treeSet = new TreeSet<>(set);
+        Set<Departement> treeSet= new TreeSet<>(hashDep);
+
         return (TreeSet<Departement>) treeSet;
+
     }
 }
